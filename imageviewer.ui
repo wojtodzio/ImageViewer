@@ -17,10 +17,10 @@
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>50</y>
-      <width>421</width>
-      <height>301</height>
+      <x>0</x>
+      <y>-30</y>
+      <width>671</width>
+      <height>411</height>
      </rect>
     </property>
     <property name="widgetResizable">
@@ -31,17 +31,17 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>419</width>
-       <height>299</height>
+       <width>669</width>
+       <height>409</height>
       </rect>
      </property>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="imageLabel">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>90</y>
-        <width>59</width>
-        <height>16</height>
+        <x>290</x>
+        <y>110</y>
+        <width>351</width>
+        <height>261</height>
        </rect>
       </property>
       <property name="text">
@@ -50,6 +50,8 @@
      </widget>
     </widget>
    </widget>
+   <zorder>scrollArea</zorder>
+   <zorder>imageLabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

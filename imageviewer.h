@@ -2,6 +2,8 @@
 #define IMAGEVIEWER_H
 
 #include <QMainWindow>
+#include <qlabel>
+#include <qscrollarea>
 
 namespace Ui {
 class ImageViewer;
@@ -17,6 +19,8 @@ public:
 
 private:
     Ui::ImageViewer *ui;
+    QLabel *imageLabel;
+    QScrollArea *scrollArea;
 };
 
 #endif // IMAGEVIEWER_H
