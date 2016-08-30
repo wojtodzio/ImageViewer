@@ -18,3 +18,6 @@ SOURCES += main.cpp\
 HEADERS  += imageviewer.h
 
 FORMS    += imageviewer.ui
+
+RESOURCES += \
+    icons.qrc
