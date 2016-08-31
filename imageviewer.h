@@ -42,6 +42,7 @@ private:
     double scaleFactor;
 
     void scaleImage(double factor);
+    void updateActions(bool updateTo);
     void adjustScrollBar(QScrollBar *scrollBar, double factor);
 };
 

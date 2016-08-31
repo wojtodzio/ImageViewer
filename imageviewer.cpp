@@ -13,10 +13,7 @@ ImageViewer::ImageViewer(QWidget *parent) :
     actionRotateLeft = ui->actionRotateLeft;
     actionRotateRight = ui->actionRotateRight;
 
-    actionZoomIn->setEnabled(false);
-    actionZoomOut->setEnabled(false);
-    actionRotateLeft->setEnabled(false);
-    actionRotateRight->setEnabled(false);
+    updateActions(false);
 
     imageLabel = new QLabel;
     imageLabel->setBackgroundRole(QPalette::Base);
@@ -34,6 +31,14 @@ ImageViewer::ImageViewer(QWidget *parent) :
 ImageViewer::~ImageViewer()
 {
     delete ui;
+}
+
+void ImageViewer::updateActions(bool updateTo)
+{
+    actionZoomIn->setEnabled(updateTo);
+    actionZoomOut->setEnabled(updateTo);
+    actionRotateLeft->setEnabled(updateTo);
+    actionRotateRight->setEnabled(updateTo);
 }
 
 void ImageViewer::scaleImage(double factor)
@@ -74,8 +79,7 @@ void ImageViewer::on_actionOpen_triggered()
          imageLabel->setPixmap(QPixmap::fromImage(image));
          scaleFactor = 1.0;
 
-         actionZoomIn->setEnabled(true);
-         actionZoomOut->setEnabled(true);
+         updateActions(true);
 
          imageLabel->adjustSize();
     }
