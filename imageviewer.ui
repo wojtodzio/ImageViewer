@@ -46,6 +46,8 @@
     </property>
     <addaction name="actionRotateLeft"/>
     <addaction name="actionRotateRight"/>
+    <addaction name="separator"/>
+    <addaction name="actionCrop"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -56,13 +58,17 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>false</bool>
+    <bool>true</bool>
    </attribute>
    <addaction name="actionOpen"/>
+   <addaction name="separator"/>
    <addaction name="actionZoomIn"/>
    <addaction name="actionZoomOut"/>
+   <addaction name="separator"/>
    <addaction name="actionRotateLeft"/>
    <addaction name="actionRotateRight"/>
+   <addaction name="separator"/>
+   <addaction name="actionCrop"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen">
@@ -123,6 +129,18 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionCrop">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/new/prefix1/icons/crop.png</normaloff>:/new/prefix1/icons/crop.png</iconset>
+   </property>
+   <property name="text">
+    <string>Crop</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+K</string>
    </property>
   </action>
  </widget>

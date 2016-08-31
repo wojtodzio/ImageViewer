@@ -12,6 +12,7 @@ ImageViewer::ImageViewer(QWidget *parent) :
     actionZoomOut = ui->actionZoomOut;
     actionRotateLeft = ui->actionRotateLeft;
     actionRotateRight = ui->actionRotateRight;
+    actionCrop = ui->actionCrop;
 
     updateActions(false);
 
@@ -39,6 +40,7 @@ void ImageViewer::updateActions(bool updateTo)
     actionZoomOut->setEnabled(updateTo);
     actionRotateLeft->setEnabled(updateTo);
     actionRotateRight->setEnabled(updateTo);
+    actionCrop->setEnabled(updateTo);
 }
 
 void ImageViewer::scaleImage(double factor)
