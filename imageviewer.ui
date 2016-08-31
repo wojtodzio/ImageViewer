@@ -40,8 +40,14 @@
     <addaction name="actionZoomIn"/>
     <addaction name="actionZoomOut"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
+   <addaction name="menuEdit"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -75,6 +81,9 @@
    <property name="text">
     <string>Zoom &amp;In (25%)</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
   </action>
   <action name="actionZoomOut">
    <property name="icon">
@@ -83,6 +92,9 @@
    </property>
    <property name="text">
     <string>Zoom Out (25%)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
    </property>
   </action>
  </widget>
