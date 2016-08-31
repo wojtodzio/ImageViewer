@@ -94,3 +94,21 @@ void ImageViewer::on_actionZoomOut_triggered()
 {
     scaleImage(0.80);
 }
+
+void ImageViewer::on_actionRotateLeft_triggered()
+{
+    QPixmap pixmap(*imageLabel->pixmap());
+    QMatrix rm;
+    rm.rotate(-90);
+    pixmap = pixmap.transformed(rm);
+    imageLabel->setPixmap(pixmap);
+}
+
+void ImageViewer::on_actionRotateRight_triggered()
+{
+    QPixmap pixmap(*imageLabel->pixmap());
+    QMatrix rm;
+    rm.rotate(90);
+    pixmap = pixmap.transformed(rm);
+    imageLabel->setPixmap(pixmap);
+}

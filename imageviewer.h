@@ -27,6 +27,10 @@ private slots:
     void on_actionZoomIn_triggered();
     void on_actionZoomOut_triggered();
 
+    void on_actionRotateLeft_triggered();
+
+    void on_actionRotateRight_triggered();
+
 private:
     Ui::ImageViewer *ui;
     QLabel *imageLabel;
