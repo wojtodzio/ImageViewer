@@ -8,16 +8,21 @@ ImageViewer::ImageViewer(QWidget *parent) :
     ui->setupUi(this);
 
     actionOpen = ui->actionOpen;
+    actionZoomIn = ui->actionZoomIn;
+    actionZoomOut = ui->actionZoomOut;
 
-    imageLabel = ui->imageLabel;
+    actionZoomIn->setEnabled(false);
+    actionZoomOut->setEnabled(false);
 
+    imageLabel = new QLabel;
     imageLabel->setBackgroundRole(QPalette::Base);
     imageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
     imageLabel->setScaledContents(true);
 
-    scrollArea = ui->scrollArea;
-
+    scrollArea = new QScrollArea;
     scrollArea->setBackgroundRole(QPalette::Dark);
+    scrollArea->setWidget(imageLabel);
+    setCentralWidget(scrollArea);
 
     setWindowTitle(tr("Image Viewer"));
 }
@@ -27,9 +32,18 @@ ImageViewer::~ImageViewer()
     delete ui;
 }
 
+void ImageViewer::scaleImage(double factor)
+{
+    Q_ASSERT(imageLabel->pixmap());
+    scaleFactor *= factor;
+    imageLabel->resize(scaleFactor * imageLabel->pixmap()->size());
+
+    actionZoomIn->setEnabled(scaleFactor < 3.0);
+    actionZoomOut->setEnabled(scaleFactor > 0.333);
+}
+
 void ImageViewer::on_actionOpen_triggered()
 {
-    qDebug() << "open()";
     QString fileName = QFileDialog::getOpenFileName(this,
                                                     tr("Open File"),
                                                     QDir::currentPath());
@@ -42,6 +56,23 @@ void ImageViewer::on_actionOpen_triggered()
 
              return;
          }
-         ui->imageLabel->setPixmap(QPixmap::fromImage(image));
+
+         imageLabel->setPixmap(QPixmap::fromImage(image));
+         scaleFactor = 1.0;
+
+         actionZoomIn->setEnabled(true);
+         actionZoomOut->setEnabled(true);
+
+         imageLabel->adjustSize();
     }
+}
+
+void ImageViewer::on_actionZoomIn_triggered()
+{
+    scaleImage(1.25);
+}
+
+void ImageViewer::on_actionZoomOut_triggered()
+{
+    scaleImage(0.85);
 }
