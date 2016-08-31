@@ -8,6 +8,7 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QDebug>
+#include <QScrollBar>
 
 namespace Ui {
 class ImageViewer;
@@ -38,6 +39,7 @@ private:
     double scaleFactor;
 
     void scaleImage(double factor);
+    void adjustScrollBar(QScrollBar *scrollBar, double factor);
 };
 
 #endif // IMAGEVIEWER_H
