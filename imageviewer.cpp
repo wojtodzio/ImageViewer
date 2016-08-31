@@ -74,5 +74,5 @@ void ImageViewer::on_actionZoomIn_triggered()
 
 void ImageViewer::on_actionZoomOut_triggered()
 {
-    scaleImage(0.85);
+    scaleImage(0.80);
 }
