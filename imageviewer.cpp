@@ -105,6 +105,7 @@ void ImageViewer::rotateImage(int angle)
     QMatrix rm;
     rm.rotate(angle);
     pixmap = pixmap.transformed(rm);
+    image = pixmap.toImage();
     imageLabel->setPixmap(pixmap);
 }
 
