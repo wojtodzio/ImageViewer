@@ -11,6 +11,7 @@
 #include <QScrollBar>
 #include <QMouseEvent>
 #include <QStatusBar>
+#include <QVector>
 
 namespace Ui {
 class ImageViewer;
@@ -56,6 +57,9 @@ private:
 
     QToolBar *mainToolBar;
 
+    QVector<QImage> history;
+    QVector<QImage> reverseHistory;
+
     QAction *actionCrop;
     QAction *actionOpen;
     QAction *actionPaintBlack;
@@ -75,6 +79,9 @@ private:
     void changeCroppingState(bool changeTo);
     void refreshLabel();
     void rotateImage(int angle);
+    void saveToHistory(QImage imageToSave);
+    void saveToHistoryWithClear(QImage imageToSave);
+    void saveToReverseHistory(QImage imageToSave);
     void scaleImage(double factor);
     void updateActions(bool updateTo);
 };

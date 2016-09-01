@@ -23,6 +23,8 @@ ImageViewer::ImageViewer(QWidget *parent) :
     statusBar = ui->statusBar;
 
     updateActions(false);
+    actionUndo->setEnabled(false);
+    actionRedo->setEnabled(false);
 
     imageLabel = new QLabel;
     imageLabel->resize(0, 0);
@@ -69,6 +71,8 @@ void ImageViewer::refreshLabel()
 
 void ImageViewer::rotateImage(int angle)
 {
+    saveToHistoryWithClear(image);
+
     QPixmap pixmap(*imageLabel->pixmap());
     QMatrix rm;
     rm.rotate(angle);
@@ -76,6 +80,25 @@ void ImageViewer::rotateImage(int angle)
     image = pixmap.toImage();
 
     refreshLabel();
+}
+
+void ImageViewer::saveToHistory(QImage imageToSave)
+{
+    history.push_back(imageToSave);
+    actionUndo->setEnabled(true);
+}
+
+void ImageViewer::saveToHistoryWithClear(QImage imageToSave)
+{
+    saveToHistory(imageToSave);
+    reverseHistory.clear();
+    actionRedo->setEnabled(false);
+}
+
+void ImageViewer::saveToReverseHistory(QImage imageToSave)
+{
+    reverseHistory.push_back(imageToSave);
+    actionRedo->setEnabled(true);
 }
 
 void ImageViewer::scaleImage(double factor)
@@ -97,8 +120,6 @@ void ImageViewer::updateActions(bool updateTo)
     actionRotateLeft->setEnabled(updateTo);
     actionRotateRight->setEnabled(updateTo);
     actionSave->setEnabled(updateTo);
-    actionUndo->setEnabled(updateTo);
-    actionRedo->setEnabled(updateTo);
     actionZoomIn->setEnabled(updateTo);
     actionZoomOut->setEnabled(updateTo);
 }
@@ -125,6 +146,8 @@ bool ImageViewer::eventFilter(QObject* watched, QEvent* event)
         case QEvent::MouseButtonRelease:
         {
             if (!croppingState) break;
+            saveToHistoryWithClear(image);
+
             const QMouseEvent* const me = static_cast<const QMouseEvent*>(event);
             croppingEnd = me->pos() / scaleFactor;
 
@@ -189,6 +212,8 @@ void ImageViewer::on_actionOpen_triggered()
 
 void ImageViewer::on_actionPaintBlack_triggered()
 {
+    saveToHistoryWithClear(image);
+
     int width = image.width(), height = image.height();
 
     QRgb color;
@@ -236,12 +261,26 @@ void ImageViewer::on_actionShowToolbar_triggered(bool checked)
 
 void ImageViewer::on_actionUndo_triggered()
 {
-
+    saveToReverseHistory(image);
+    image = history.last();
+    refreshLabel();
+    imageLabel->adjustSize();
+    scaleImage(1.0);
+    history.pop_back();
+    if (history.size() == 0)
+        actionUndo->setEnabled(false);
 }
 
 void ImageViewer::on_actionRedo_triggered()
 {
-
+    saveToHistory(image);
+    image = reverseHistory.last();
+    refreshLabel();
+    imageLabel->adjustSize();
+    scaleImage(1.0);
+    reverseHistory.pop_back();
+    if (reverseHistory.size() == 0)
+        actionRedo->setEnabled(false);
 }
 
 void ImageViewer::on_actionZoomIn_triggered()
