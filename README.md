@@ -4,6 +4,9 @@ Basic Image Viewer and Editor written in C++ using QT.
 This project was made solely for purpose of learning QT library.
 It was tested to work only on OS X.
 
+You can download current stable release for OS X here:
+https://github.com/wojtodzio/ImageViewer/releases/tag/v1.0
+
 Features:
 - Opening images
 - Saving images
