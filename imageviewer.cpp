@@ -18,8 +18,6 @@ ImageViewer::ImageViewer(QWidget *parent) :
 
     updateActions(false);
 
-    setMouseTracking(true);
-
     imageLabel = new QLabel;
     imageLabel->resize(0, 0);
     imageLabel->setMouseTracking(true);
@@ -29,7 +27,6 @@ ImageViewer::ImageViewer(QWidget *parent) :
     imageLabel->installEventFilter(this);
 
     scrollArea = new QScrollArea;
-    scrollArea->setMouseTracking(true);
     scrollArea->setBackgroundRole(QPalette::Dark);
     scrollArea->setWidget(imageLabel);
     setCentralWidget(scrollArea);
