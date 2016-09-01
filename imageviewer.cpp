@@ -165,3 +165,8 @@ bool ImageViewer::eventFilter(QObject* watched, QEvent* event)
 
     return false;
 }
+
+void ImageViewer::on_actionSave_triggered()
+{
+
+}
