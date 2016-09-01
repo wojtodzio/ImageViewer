@@ -60,6 +60,11 @@ void ImageViewer::changeCroppingState(bool changeTo)
         setCursor(Qt::ArrowCursor);
 }
 
+void ImageViewer::refreshLabel()
+{
+    imageLabel->setPixmap(QPixmap::fromImage(image));
+}
+
 void ImageViewer::rotateImage(int angle)
 {
     QPixmap pixmap(*imageLabel->pixmap());
@@ -67,9 +72,8 @@ void ImageViewer::rotateImage(int angle)
     rm.rotate(angle);
     pixmap = pixmap.transformed(rm);
     image = pixmap.toImage();
-    imageLabel->setPixmap(pixmap);
 
-    imageLabel->adjustSize();
+    refreshLabel();
 }
 
 void ImageViewer::scaleImage(double factor)
@@ -122,7 +126,7 @@ bool ImageViewer::eventFilter(QObject* watched, QEvent* event)
 
             const QRect rect(croppingStart, croppingEnd);
             image = image.copy(rect);
-            imageLabel->setPixmap(QPixmap::fromImage(image));
+            refreshLabel();
             imageLabel->adjustSize();
             scaleImage(1.0);
 
@@ -168,13 +172,12 @@ void ImageViewer::on_actionOpen_triggered()
              return;
          }
 
-         imageLabel->setPixmap(QPixmap::fromImage(image));
-
          scaleFactor = 1.0;
          croppingState = false;
          setCursor(Qt::ArrowCursor);
          updateActions(true);
 
+         refreshLabel();
          imageLabel->adjustSize();
     }
 }
@@ -195,7 +198,7 @@ void ImageViewer::on_actionPaintBlack_triggered()
             image.setPixel(x, y, qRgb(value, value, value));
         }
 
-    imageLabel->setPixmap(QPixmap::fromImage(image));
+    refreshLabel();
 }
 
 void ImageViewer::on_actionRotateLeft_triggered()

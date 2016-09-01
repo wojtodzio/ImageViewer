@@ -69,6 +69,7 @@ private:
 
     void adjustScrollBar(QScrollBar *scrollBar, double factor);
     void changeCroppingState(bool changeTo);
+    void refreshLabel();
     void rotateImage(int angle);
     void scaleImage(double factor);
     void updateActions(bool updateTo);
