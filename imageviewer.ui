@@ -177,6 +177,9 @@
    <property name="text">
     <string>Show Toolbar</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
   </action>
   <action name="actionPaintBlack">
    <property name="icon">
@@ -185,6 +188,9 @@
    </property>
    <property name="text">
     <string>Paint Black</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+B</string>
    </property>
   </action>
  </widget>
