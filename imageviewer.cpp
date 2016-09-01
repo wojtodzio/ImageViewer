@@ -182,7 +182,20 @@ void ImageViewer::on_actionOpen_triggered()
 
 void ImageViewer::on_actionPaintBlack_triggered()
 {
+    int width = image.width(), height = image.height();
 
+    QRgb color;
+    int value;
+
+    for (int x = 0; x < width; ++x)
+        for (int y = 0; y < height; ++y)
+        {
+            color = image.pixel(x, y);
+            value = qGray(color);
+            image.setPixel(x, y, qRgb(value, value, value));
+        }
+
+    imageLabel->setPixmap(QPixmap::fromImage(image));
 }
 
 void ImageViewer::on_actionRotateLeft_triggered()
