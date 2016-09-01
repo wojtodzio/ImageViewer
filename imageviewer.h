@@ -30,6 +30,7 @@ private slots:
     void on_actionRotateLeft_triggered();
     void on_actionRotateRight_triggered();
     void on_actionCrop_triggered();
+    void on_actionSave_triggered();
     bool eventFilter(QObject* watched, QEvent* event);
 
 private:
@@ -47,6 +48,7 @@ private:
     QAction *actionRotateLeft;
     QAction *actionRotateRight;
     QAction *actionCrop;
+    QAction *actionSave;
 
     double scaleFactor;
     bool croppingImage;

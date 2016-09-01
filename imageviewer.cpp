@@ -13,6 +13,7 @@ ImageViewer::ImageViewer(QWidget *parent) :
     actionRotateLeft = ui->actionRotateLeft;
     actionRotateRight = ui->actionRotateRight;
     actionCrop = ui->actionCrop;
+    actionSave = ui->actionSave;
 
     updateActions(false);
 
@@ -42,6 +43,7 @@ void ImageViewer::updateActions(bool updateTo)
     actionRotateLeft->setEnabled(updateTo);
     actionRotateRight->setEnabled(updateTo);
     actionCrop->setEnabled(updateTo);
+    actionSave->setEnabled(updateTo);
 }
 
 void ImageViewer::scaleImage(double factor)
@@ -168,5 +170,10 @@ bool ImageViewer::eventFilter(QObject* watched, QEvent* event)
 
 void ImageViewer::on_actionSave_triggered()
 {
+    QString imagePath = QFileDialog::getSaveFileName(this,
+                                                     tr("Save File"),
+                                                     "",
+                                                     tr("JPEG (*.jpg *.jpeg);;PNG (*.png)" ));
 
+    image.save(imagePath);
 }
