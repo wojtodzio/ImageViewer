@@ -120,7 +120,13 @@ void ImageViewer::on_actionRotateRight_triggered()
 
 void ImageViewer::on_actionCrop_triggered()
 {
-    croppingImage = true;
+    changeCroppingImage(true);
+}
+
+void ImageViewer::changeCroppingImage(bool changeTo)
+{
+    croppingImage = changeTo;
+    actionCrop->setDisabled(changeTo);
 }
 
 bool ImageViewer::eventFilter(QObject* watched, QEvent* event)
@@ -148,7 +154,7 @@ bool ImageViewer::eventFilter(QObject* watched, QEvent* event)
             imageLabel->adjustSize();
             scaleImage(1.0);
 
-            croppingImage = false;
+            changeCroppingImage(false);
             break;
         }
 
