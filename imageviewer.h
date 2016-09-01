@@ -37,6 +37,9 @@ private:
     QLabel *imageLabel;
     QScrollArea *scrollArea;
     QString fileName;
+    QImage image;
+    QPoint croppingStart;
+    QPoint croppingEnd;
 
     QAction *actionOpen;
     QAction *actionZoomIn;
@@ -47,8 +50,6 @@ private:
 
     double scaleFactor;
     bool croppingImage;
-    QPoint croppingStart;
-    QPoint croppingEnd;
 
     void scaleImage(double factor);
     void updateActions(bool updateTo);
