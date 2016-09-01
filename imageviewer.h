@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QScrollBar>
 #include <QMouseEvent>
+#include <QStatusBar>
 
 namespace Ui {
 class ImageViewer;
@@ -41,6 +42,7 @@ private:
     QImage image;
     QPoint croppingStart;
     QPoint croppingEnd;
+    QStatusBar *statusBar;
 
     QAction *actionOpen;
     QAction *actionZoomIn;

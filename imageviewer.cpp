@@ -14,16 +14,21 @@ ImageViewer::ImageViewer(QWidget *parent) :
     actionRotateRight = ui->actionRotateRight;
     actionCrop = ui->actionCrop;
     actionSave = ui->actionSave;
+    statusBar = ui->statusBar;
 
     updateActions(false);
 
+    setMouseTracking(true);
+
     imageLabel = new QLabel;
+    imageLabel->setMouseTracking(true);
     imageLabel->setBackgroundRole(QPalette::Base);
     imageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
     imageLabel->setScaledContents(true);
     imageLabel->installEventFilter(this);
 
     scrollArea = new QScrollArea;
+    scrollArea->setMouseTracking(true);
     scrollArea->setBackgroundRole(QPalette::Dark);
     scrollArea->setWidget(imageLabel);
     setCentralWidget(scrollArea);
@@ -84,7 +89,7 @@ void ImageViewer::on_actionOpen_triggered()
          imageLabel->setPixmap(QPixmap::fromImage(image));
          scaleFactor = 1.0;
          croppingImage = false;
-
+         setCursor(Qt::ArrowCursor);
          updateActions(true);
 
          imageLabel->adjustSize();
@@ -130,17 +135,27 @@ void ImageViewer::changeCroppingImage(bool changeTo)
 {
     croppingImage = changeTo;
     actionCrop->setDisabled(changeTo);
+
+    if (changeTo)
+    {
+        setCursor(Qt::CrossCursor);
+    }
+    else
+    {
+        setCursor(Qt::ArrowCursor);
+    }
 }
 
 bool ImageViewer::eventFilter(QObject* watched, QEvent* event)
 {
-    if (watched != imageLabel || !croppingImage)
+    if (watched != imageLabel)
         return false;
 
     switch (event->type())
     {
         case QEvent::MouseButtonPress:
         {
+            if (!croppingImage) break;
             const QMouseEvent* const me = static_cast<const QMouseEvent*>(event);
             croppingStart = me->pos() / scaleFactor;
             break;
@@ -148,6 +163,7 @@ bool ImageViewer::eventFilter(QObject* watched, QEvent* event)
 
         case QEvent::MouseButtonRelease:
         {
+            if (!croppingImage) break;
             const QMouseEvent* const me = static_cast<const QMouseEvent*>(event);
             croppingEnd = me->pos() / scaleFactor;
 
@@ -159,6 +175,13 @@ bool ImageViewer::eventFilter(QObject* watched, QEvent* event)
 
             changeCroppingImage(false);
             break;
+        }
+
+        case QEvent::MouseMove:
+        {
+            const QMouseEvent* const me = static_cast<const QMouseEvent*>(event);
+            const QPoint position = me->pos();
+            statusBar->showMessage(QString("(x,y) coordinates: (%1,%2)").arg(position.x()).arg(position.y()));
         }
 
         default:
