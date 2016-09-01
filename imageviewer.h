@@ -25,44 +25,51 @@ public:
     ~ImageViewer();
 
 private slots:
+    bool eventFilter(QObject* watched, QEvent* event);
+
+    void on_actionCrop_triggered();
     void on_actionOpen_triggered();
-    void on_actionZoomIn_triggered();
-    void on_actionZoomOut_triggered();
     void on_actionRotateLeft_triggered();
     void on_actionRotateRight_triggered();
-    void on_actionCrop_triggered();
     void on_actionSave_triggered();
     void on_actionShowToolbar_triggered(bool checked);
-    bool eventFilter(QObject* watched, QEvent* event);    
+    void on_actionZoomIn_triggered();
+    void on_actionZoomOut_triggered();
 
 private:
     Ui::ImageViewer *ui;
-    QLabel *imageLabel;
-    QScrollArea *scrollArea;
-    QString fileName;
-    QImage image;
+
     QPoint croppingStart;
     QPoint croppingEnd;
+
+    QLabel *imageLabel;
+
+    QScrollArea *scrollArea;
+
+    QString fileName;
+    QImage image;
+
     QStatusBar *statusBar;
+
     QToolBar *mainToolBar;
 
+    QAction *actionCrop;
     QAction *actionOpen;
-    QAction *actionZoomIn;
-    QAction *actionZoomOut;
     QAction *actionRotateLeft;
     QAction *actionRotateRight;
-    QAction *actionCrop;
     QAction *actionSave;
     QAction *actionShowToolbar;
+    QAction *actionZoomIn;
+    QAction *actionZoomOut;
 
     double scaleFactor;
-    bool croppingImage;
+    bool croppingState;
 
+    void adjustScrollBar(QScrollBar *scrollBar, double factor);
+    void changeCroppingState(bool changeTo);
+    void rotateImage(int angle);
     void scaleImage(double factor);
     void updateActions(bool updateTo);
-    void adjustScrollBar(QScrollBar *scrollBar, double factor);
-    void rotateImage(int angle);
-    void changeCroppingImage(bool changeTo);
 };
 
 #endif // IMAGEVIEWER_H
