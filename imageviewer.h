@@ -34,6 +34,8 @@ private slots:
     void on_actionRotateRight_triggered();
     void on_actionSave_triggered();
     void on_actionShowToolbar_triggered(bool checked);
+    void on_actionUndo_triggered();
+    void on_actionRedo_triggered();
     void on_actionZoomIn_triggered();
     void on_actionZoomOut_triggered();
 
@@ -61,6 +63,8 @@ private:
     QAction *actionRotateRight;
     QAction *actionSave;
     QAction *actionShowToolbar;
+    QAction *actionUndo;
+    QAction *actionRedo;
     QAction *actionZoomIn;
     QAction *actionZoomOut;
 

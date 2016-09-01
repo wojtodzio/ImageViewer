@@ -8,5 +8,7 @@
         <file>icons/crop.png</file>
         <file>icons/save.png</file>
         <file>icons/paint-black.png</file>
+        <file>icons/undo.png</file>
+        <file>icons/redo.png</file>
     </qresource>
 </RCC>

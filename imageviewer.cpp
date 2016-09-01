@@ -14,6 +14,8 @@ ImageViewer::ImageViewer(QWidget *parent) :
     actionRotateRight = ui->actionRotateRight;
     actionSave = ui->actionSave;
     actionShowToolbar = ui->actionShowToolbar;
+    actionUndo = ui->actionUndo;
+    actionRedo = ui->actionRedo;
     actionZoomIn = ui->actionZoomIn;
     actionZoomOut = ui->actionZoomOut;
 
@@ -95,6 +97,8 @@ void ImageViewer::updateActions(bool updateTo)
     actionRotateLeft->setEnabled(updateTo);
     actionRotateRight->setEnabled(updateTo);
     actionSave->setEnabled(updateTo);
+    actionUndo->setEnabled(updateTo);
+    actionRedo->setEnabled(updateTo);
     actionZoomIn->setEnabled(updateTo);
     actionZoomOut->setEnabled(updateTo);
 }
@@ -229,6 +233,17 @@ void ImageViewer::on_actionShowToolbar_triggered(bool checked)
         mainToolBar->hide();
 }
 
+
+void ImageViewer::on_actionUndo_triggered()
+{
+
+}
+
+void ImageViewer::on_actionRedo_triggered()
+{
+
+}
+
 void ImageViewer::on_actionZoomIn_triggered()
 {
     scaleImage(1.25);
@@ -238,4 +253,3 @@ void ImageViewer::on_actionZoomOut_triggered()
 {
     scaleImage(0.80);
 }
-
