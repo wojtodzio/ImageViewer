@@ -112,6 +112,8 @@ void ImageViewer::rotateImage(int angle)
     pixmap = pixmap.transformed(rm);
     image = pixmap.toImage();
     imageLabel->setPixmap(pixmap);
+
+    imageLabel->adjustSize();
 }
 
 void ImageViewer::on_actionRotateLeft_triggered()
