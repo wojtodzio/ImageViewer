@@ -29,6 +29,7 @@ private slots:
     bool eventFilter(QObject* watched, QEvent* event);
 
     void on_actionCrop_triggered();
+    void on_actionFullscreen_triggered();
     void on_actionPaintBlack_triggered();
     void on_actionOpen_triggered();
     void on_actionRotateLeft_triggered();

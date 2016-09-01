@@ -183,6 +183,14 @@ void ImageViewer::on_actionCrop_triggered()
     changeCroppingState(true);
 }
 
+void ImageViewer::on_actionFullscreen_triggered()
+{
+    if(isFullScreen())
+        this->setWindowState(Qt::WindowMaximized);
+    else
+        this->setWindowState(Qt::WindowFullScreen);
+}
+
 void ImageViewer::on_actionOpen_triggered()
 {
     QString lastFileName = fileName.isEmpty() ? QDir::currentPath() : fileName;

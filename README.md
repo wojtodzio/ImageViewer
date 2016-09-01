@@ -14,6 +14,7 @@ Features:
 - Undo / Redo edit actions
 - Showing mouse cursor coordinates relative to image in status bar
 - Hiding toolbar
+- Toggling fullscreen mode
 
 ![ImageViewer preview 1](image_viewer_1.gif)
 ![ImageViewer preview 2](image_viewer_2.gif)

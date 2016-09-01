@@ -42,6 +42,7 @@
     <addaction name="actionZoomOut"/>
     <addaction name="separator"/>
     <addaction name="actionShowToolbar"/>
+    <addaction name="actionFullscreen"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -215,6 +216,11 @@
    </property>
    <property name="text">
     <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionFullscreen">
+   <property name="text">
+    <string>Toggle Fullscreen</string>
    </property>
   </action>
  </widget>
