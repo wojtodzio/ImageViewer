@@ -8,6 +8,7 @@ ImageViewer::ImageViewer(QWidget *parent) :
     ui->setupUi(this);
 
     actionCrop = ui->actionCrop;
+    actionPaintBlack = ui->actionPaintBlack;
     actionOpen = ui->actionOpen;
     actionRotateLeft = ui->actionRotateLeft;
     actionRotateRight = ui->actionRotateRight;
@@ -85,12 +86,13 @@ void ImageViewer::scaleImage(double factor)
 
 void ImageViewer::updateActions(bool updateTo)
 {
-    actionZoomIn->setEnabled(updateTo);
-    actionZoomOut->setEnabled(updateTo);
+    actionCrop->setEnabled(updateTo);
+    actionPaintBlack->setEnabled(updateTo);
     actionRotateLeft->setEnabled(updateTo);
     actionRotateRight->setEnabled(updateTo);
-    actionCrop->setEnabled(updateTo);
     actionSave->setEnabled(updateTo);
+    actionZoomIn->setEnabled(updateTo);
+    actionZoomOut->setEnabled(updateTo);
 }
 
 
@@ -177,6 +179,12 @@ void ImageViewer::on_actionOpen_triggered()
     }
 }
 
+
+void ImageViewer::on_actionPaintBlack_triggered()
+{
+
+}
+
 void ImageViewer::on_actionRotateLeft_triggered()
 {
     rotateImage(-90);
@@ -214,3 +222,4 @@ void ImageViewer::on_actionZoomOut_triggered()
 {
     scaleImage(0.80);
 }
+

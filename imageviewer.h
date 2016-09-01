@@ -28,6 +28,7 @@ private slots:
     bool eventFilter(QObject* watched, QEvent* event);
 
     void on_actionCrop_triggered();
+    void on_actionPaintBlack_triggered();
     void on_actionOpen_triggered();
     void on_actionRotateLeft_triggered();
     void on_actionRotateRight_triggered();
@@ -55,6 +56,7 @@ private:
 
     QAction *actionCrop;
     QAction *actionOpen;
+    QAction *actionPaintBlack;
     QAction *actionRotateLeft;
     QAction *actionRotateRight;
     QAction *actionSave;

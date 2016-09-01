@@ -7,5 +7,6 @@
         <file>icons/rotate-right.png</file>
         <file>icons/crop.png</file>
         <file>icons/save.png</file>
+        <file>icons/paint-black.png</file>
     </qresource>
 </RCC>

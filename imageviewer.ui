@@ -51,6 +51,8 @@
     <addaction name="actionRotateRight"/>
     <addaction name="separator"/>
     <addaction name="actionCrop"/>
+    <addaction name="separator"/>
+    <addaction name="actionPaintBlack"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -73,6 +75,8 @@
    <addaction name="actionRotateRight"/>
    <addaction name="separator"/>
    <addaction name="actionCrop"/>
+   <addaction name="separator"/>
+   <addaction name="actionPaintBlack"/>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="enabled">
@@ -172,6 +176,15 @@
    </property>
    <property name="text">
     <string>Show Toolbar</string>
+   </property>
+  </action>
+  <action name="actionPaintBlack">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/new/prefix1/icons/paint-black.png</normaloff>:/new/prefix1/icons/paint-black.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paint Black</string>
    </property>
   </action>
  </widget>
