@@ -14,7 +14,9 @@ ImageViewer::ImageViewer(QWidget *parent) :
     actionRotateRight = ui->actionRotateRight;
     actionCrop = ui->actionCrop;
     actionSave = ui->actionSave;
+    actionShowToolbar = ui->actionShowToolbar;
     statusBar = ui->statusBar;
+    mainToolBar = ui->mainToolBar;
 
     updateActions(false);
 
@@ -199,4 +201,12 @@ void ImageViewer::on_actionSave_triggered()
                                                      tr("JPEG (*.jpg *.jpeg);;PNG (*.png)" ));
 
     image.save(imagePath);
+}
+
+void ImageViewer::on_actionShowToolbar_triggered(bool checked)
+{
+    if (checked)
+        mainToolBar->show();
+    else
+        mainToolBar->hide();
 }

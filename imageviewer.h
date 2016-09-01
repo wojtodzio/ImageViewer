@@ -32,7 +32,8 @@ private slots:
     void on_actionRotateRight_triggered();
     void on_actionCrop_triggered();
     void on_actionSave_triggered();
-    bool eventFilter(QObject* watched, QEvent* event);
+    void on_actionShowToolbar_triggered(bool checked);
+    bool eventFilter(QObject* watched, QEvent* event);    
 
 private:
     Ui::ImageViewer *ui;
@@ -43,6 +44,7 @@ private:
     QPoint croppingStart;
     QPoint croppingEnd;
     QStatusBar *statusBar;
+    QToolBar *mainToolBar;
 
     QAction *actionOpen;
     QAction *actionZoomIn;
@@ -51,6 +53,7 @@ private:
     QAction *actionRotateRight;
     QAction *actionCrop;
     QAction *actionSave;
+    QAction *actionShowToolbar;
 
     double scaleFactor;
     bool croppingImage;
