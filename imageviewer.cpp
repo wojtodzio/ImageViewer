@@ -80,6 +80,8 @@ void ImageViewer::rotateImage(int angle)
     image = pixmap.toImage();
 
     refreshLabel();
+
+    imageLabel->adjustSize();
 }
 
 void ImageViewer::saveToHistory(QImage imageToSave)
@@ -155,7 +157,6 @@ bool ImageViewer::eventFilter(QObject* watched, QEvent* event)
             image = image.copy(rect);
             refreshLabel();
             imageLabel->adjustSize();
-            scaleImage(1.0);
 
             changeCroppingState(false);
 
@@ -273,7 +274,7 @@ void ImageViewer::on_actionUndo_triggered()
     image = history.last();
     refreshLabel();
     imageLabel->adjustSize();
-    scaleImage(1.0);
+
     history.pop_back();
     if (history.size() == 0)
         actionUndo->setEnabled(false);
@@ -285,7 +286,7 @@ void ImageViewer::on_actionRedo_triggered()
     image = reverseHistory.last();
     refreshLabel();
     imageLabel->adjustSize();
-    scaleImage(1.0);
+
     reverseHistory.pop_back();
     if (reverseHistory.size() == 0)
         actionRedo->setEnabled(false);
