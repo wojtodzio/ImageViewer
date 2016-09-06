@@ -40,6 +40,7 @@ private slots:
     void on_actionRedo_triggered();
     void on_actionZoomIn_triggered();
     void on_actionZoomOut_triggered();
+    void on_actionZoomToFit_triggered();
 
 private:
     Ui::ImageViewer *ui;
@@ -72,6 +73,7 @@ private:
     QAction *actionRedo;
     QAction *actionZoomIn;
     QAction *actionZoomOut;
+    QAction *actionZoomToFit;
 
     double scaleFactor;
     bool croppingState;

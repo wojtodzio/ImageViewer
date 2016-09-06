@@ -18,6 +18,7 @@ ImageViewer::ImageViewer(QWidget *parent) :
     actionRedo = ui->actionRedo;
     actionZoomIn = ui->actionZoomIn;
     actionZoomOut = ui->actionZoomOut;
+    actionZoomToFit = ui->actionZoomToFit;
 
     mainToolBar = ui->mainToolBar;
     statusBar = ui->statusBar;
@@ -124,6 +125,7 @@ void ImageViewer::updateActions(bool updateTo)
     actionSave->setEnabled(updateTo);
     actionZoomIn->setEnabled(updateTo);
     actionZoomOut->setEnabled(updateTo);
+    actionZoomToFit->setEnabled(updateTo);
 }
 
 
@@ -300,4 +302,21 @@ void ImageViewer::on_actionZoomIn_triggered()
 void ImageViewer::on_actionZoomOut_triggered()
 {
     scaleImage(0.80);
+}
+
+void ImageViewer::on_actionZoomToFit_triggered()
+{
+    QSize size = scrollArea->size();
+    QSize oldSize = imageLabel->pixmap()->size();
+
+    double ratio = double(oldSize.height()) / oldSize.width();
+
+    if (size.width() * ratio > size.height())
+    {
+        imageLabel->resize(size.height() / ratio, size.height());
+    }
+    else
+    {
+        imageLabel->resize(size.width(), size.width() * ratio);
+    }
 }

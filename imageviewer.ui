@@ -40,6 +40,7 @@
     </property>
     <addaction name="actionZoomIn"/>
     <addaction name="actionZoomOut"/>
+    <addaction name="actionZoomToFit"/>
     <addaction name="separator"/>
     <addaction name="actionShowToolbar"/>
     <addaction name="actionFullscreen"/>
@@ -74,6 +75,7 @@
    <addaction name="separator"/>
    <addaction name="actionZoomIn"/>
    <addaction name="actionZoomOut"/>
+   <addaction name="actionZoomToFit"/>
    <addaction name="separator"/>
    <addaction name="actionUndo"/>
    <addaction name="actionRedo"/>
@@ -221,6 +223,15 @@
   <action name="actionFullscreen">
    <property name="text">
     <string>Toggle Fullscreen</string>
+   </property>
+  </action>
+  <action name="actionZoomToFit">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/new/prefix1/icons/zoom-to-window.png</normaloff>:/new/prefix1/icons/zoom-to-window.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom To Fit</string>
    </property>
   </action>
  </widget>
