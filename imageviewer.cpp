@@ -306,17 +306,21 @@ void ImageViewer::on_actionZoomOut_triggered()
 
 void ImageViewer::on_actionZoomToFit_triggered()
 {
-    QSize size = scrollArea->size();
-    QSize oldSize = imageLabel->pixmap()->size();
+    QSize windowSize = scrollArea->size();
+    QSize labelSize = imageLabel->pixmap()->size();
 
-    double ratio = double(oldSize.height()) / oldSize.width();
+    double imageRatio = double(labelSize.height()) / labelSize.width();
+    double scaleTo;
 
-    if (size.width() * ratio > size.height())
+    if (windowSize.width() * imageRatio > windowSize.height())
     {
-        imageLabel->resize(size.height() / ratio, size.height());
+        scaleTo = double(windowSize.height()) / labelSize.height();
     }
     else
     {
-        imageLabel->resize(size.width(), size.width() * ratio);
+        scaleTo = double(windowSize.width()) / labelSize.width();
     }
+
+    double scaleBy = scaleTo / scaleFactor;
+    scaleImage(scaleBy);
 }
