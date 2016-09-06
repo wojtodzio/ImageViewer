@@ -34,6 +34,7 @@ All icons used in this project are free to use. You can download them here:
 - https://www.iconfinder.com/icons/1021026/paint_icon#size=256
 - https://www.iconfinder.com/icons/211811/redo_icon#size=256
 - https://www.iconfinder.com/icons/211838/undo_icon#size=256
+- https://www.iconfinder.com/icons/298720/aligned_alignment_to_icon#size=256
 
 # Licence
 The software is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
